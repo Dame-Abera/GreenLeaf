@@ -66,13 +66,10 @@ fun NavigationGraph(navController: NavHostController) {
             )
         ) { backStack ->
             val plantId = backStack.arguments?.getString("plantId")
-            val addEditPlantVm: AddEditPlantViewModel = viewModel()
-            AddEditPlantScreen(
-                navController = navController,
-                viewModel = addEditPlantVm,
-                plantId = plantId  // pass it along
-            )
+            val vm: AddEditPlantViewModel = viewModel()
+            AddEditPlantScreen(navController, vm, plantId)
         }
+
 
 
         // --- Observation Screens ---
@@ -91,9 +88,9 @@ fun NavigationGraph(navController: NavHostController) {
             val obsId = backStack.arguments?.getString("observationId")
             val vm: AddEditObservationViewModel = viewModel()
             AddEditObservationScreen(
-                navController = navController,
-                observationId = obsId,
-                observationViewModel = vm // Corrected parameter name
+                navController       = navController,
+                observationId       = obsId,
+                observationViewModel = vm
             )
         }
 

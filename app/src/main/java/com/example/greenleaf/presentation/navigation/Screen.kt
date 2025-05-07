@@ -11,19 +11,18 @@ sealed class Screen(val route: String) {
     object ObservationDetail : Screen("observation_detail/{observationId}") {
         fun createRoute(observationId: String) = "observation_detail/$observationId"
     }
-    object AddEditPlant : Screen("add_edit_plant/{plantId?}") {
+    // Screen.kt
+    object AddEditPlant : Screen("add_edit_plant?plantId={plantId}") {
         fun createRoute(plantId: String?): String =
-            if (plantId != null) "add_edit_plant/$plantId" else "add_edit_plant"
+            if (plantId != null) "add_edit_plant?plantId=$plantId"
+            else                        "add_edit_plant"
     }
+
     // in com.example.greenleaf.presentation.navigation.Screen
-    object AddEditObservation : Screen("add_edit_observation/{observationId?}") {
-        /**
-         * If observationId is null, this yields "add_edit_observation",
-         * otherwise "add_edit_observation/12345"
-         */
+    object AddEditObservation : Screen("add_edit_observation?observationId={observationId}") {
         fun createRoute(observationId: String?): String =
-            if (observationId != null) "add_edit_observation/$observationId"
-            else "add_edit_observation"
+            if (observationId != null) "add_edit_observation?observationId=$observationId"
+            else                        "add_edit_observation"
     }
 
     object AdminDashboard : Screen("admin_dashboard")

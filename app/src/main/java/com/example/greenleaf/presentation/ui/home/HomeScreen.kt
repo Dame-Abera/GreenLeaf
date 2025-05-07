@@ -47,8 +47,9 @@ fun HomeScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    if (selectedTabIndex == 0) navController.navigate("add_edit_plant")
-                    else navController.navigate("add_edit_observation")
+                    if (selectedTabIndex == 0) navController.navigate(    Screen.AddEditPlant.createRoute(null))
+                    else navController.navigate(          Screen.AddEditObservation.createRoute(null)
+                    )
                 },
                 containerColor = Color(0xFF00C853)
             ) {
