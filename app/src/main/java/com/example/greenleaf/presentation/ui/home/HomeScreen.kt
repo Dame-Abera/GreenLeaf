@@ -1,6 +1,7 @@
 package com.example.greenleaf.presentation.ui.home
-import com.example.greenleaf.presentation.navigation.Screen
 
+import com.example.greenleaf.presentation.navigation.Screen
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -40,16 +41,32 @@ fun HomeScreen(
 
     Scaffold(
         topBar = {
-            CenterAlignedTopAppBar(
-                title = { Text("GreenLeaf") }
+            TopAppBar(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(56.dp),
+                title = {
+                    Text(
+                        text = "GreenLeaf",
+                        style = MaterialTheme.typography.titleLarge,
+                        color = Color.Black,
+                        modifier = Modifier.padding(start = 16.dp)
+                    )
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = Color.White,
+                    titleContentColor = Color.Black
+                )
             )
         },
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    if (selectedTabIndex == 0) navController.navigate(    Screen.AddEditPlant.createRoute(null))
-                    else navController.navigate(          Screen.AddEditObservation.createRoute(null)
-                    )
+                    if (selectedTabIndex == 0) {
+                        navController.navigate(Screen.AddEditPlant.createRoute(null))
+                    } else {
+                        navController.navigate(Screen.AddEditObservation.createRoute(null))
+                    }
                 },
                 containerColor = Color(0xFF00C853)
             ) {
@@ -57,69 +74,101 @@ fun HomeScreen(
             }
         },
         bottomBar = {
-            Column {
-                HorizontalDivider(thickness = 1.dp, color = Color.Gray)
-                NavigationBar {
-                    NavigationBarItem(
-                        selected = true,
-                        onClick = { /* Home selected */ },
-                        icon = { Icon(Icons.Filled.Home, contentDescription = "Home") },
-                        label = { Text("Home") }
-                    )
-                    NavigationBarItem(
-                        selected = false,
-                        onClick= {
-                            navController.navigate(Screen.Profile.route) {
-                                // optional: clear any deeper backstack
-                                popUpTo(Screen.Home.route) { inclusive = false }
-                            }
-                        },
-                        icon = { Icon(Icons.Filled.Person, contentDescription = "Account") },
-                        label = { Text("Account") }
-                    )
-                }
-            }
-        }
-    ) { innerPadding ->
-        Column(modifier = Modifier.padding(innerPadding)) {
-            TabRow(
-                selectedTabIndex = selectedTabIndex,
-                indicator = { tabPositions ->
-                    SecondaryIndicator(
-                        Modifier.tabIndicatorOffset(tabPositions[selectedTabIndex]),
-                        color = Color(0xFF00C853)
-                    )
-                }
-            ) {
-                tabTitles.forEachIndexed { index, title ->
-                    Tab(
-                        selected = selectedTabIndex == index,
-                        onClick = { selectedTabIndex = index }
-                    ) {
-                        Text(title, modifier = Modifier.padding(16.dp))
-                    }
-                }
-            }
+            HorizontalDivider(
+                modifier = Modifier.fillMaxWidth(),
+                thickness = 1.dp,
+                color = Color.LightGray
+            )
+            NavigationBar(
 
-            if (selectedTabIndex == 0) {
-                LazyColumn(modifier = Modifier.fillMaxSize()) {
-                    items(plants) { plant ->
-                        PlantCard(plant = plant) {
-                            navController.navigate(Screen.PlantDetail.createRoute(plant.id))
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(80.dp)
+            ) {
+                NavigationBarItem(
+                    selected = true,
+                    onClick = { /* already on Home */ },
+                    icon = { Icon(Icons.Filled.Home, contentDescription = "Home") },
+                    label = { Text("Home") },
+                    colors = NavigationBarItemDefaults.colors(
+                        selectedIconColor = Color(0xFF00C853),
+                        selectedTextColor = Color(0xFF00C853),
+                        unselectedIconColor = Color.Gray,
+                        unselectedTextColor = Color.Gray
+                    )
+                )
+                NavigationBarItem(
+                    selected = false,
+                    onClick = {
+                        navController.navigate(Screen.Profile.route) {
+                            popUpTo(Screen.Home.route) { inclusive = false }
+                        }
+                    },
+                    icon = { Icon(Icons.Filled.Person, contentDescription = "Account") },
+                    label = { Text("Account") },
+                    colors = NavigationBarItemDefaults.colors(
+                        selectedIconColor = Color(0xFF00C853),
+                        selectedTextColor = Color(0xFF00C853),
+                        unselectedIconColor = Color.Gray,
+                        unselectedTextColor = Color.Gray
+                    )
+                )
+            }
+        },
+        content = { innerPadding ->
+            Column(
+                modifier = Modifier
+                    .padding(innerPadding)
+                    .fillMaxSize()
+            ) {
+                TabRow(
+                    selectedTabIndex = selectedTabIndex,
+                    modifier = Modifier.fillMaxWidth(),
+                    indicator = { tabPositions ->
+                        SecondaryIndicator(
+                            Modifier.tabIndicatorOffset(tabPositions[selectedTabIndex]),
+                            color = Color(0xFF00C853)
+                        )
+                    }
+                ) {
+                    tabTitles.forEachIndexed { index, title ->
+                        Tab(
+                            selected = selectedTabIndex == index,
+                            onClick = { selectedTabIndex = index }
+                        ) {
+                            Text(title, modifier = Modifier.padding(vertical = 12.dp, horizontal = 16.dp))
                         }
                     }
                 }
-            } else {
-                LazyColumn(modifier = Modifier.fillMaxSize()) {
-                    items(observations) { obs ->
-                        ObservationCard(observation = obs) {
-                            navController.navigate(Screen.ObservationDetail.createRoute(obs.id))
+
+                if (selectedTabIndex == 0) {
+                    LazyColumn(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(top = 8.dp, bottom = 8.dp)
+                    ) {
+                        items(plants) { plant ->
+                            PlantCard(plant = plant) {
+                                navController.navigate(Screen.PlantDetail.createRoute(plant.id))
+                            }
+                        }
+                    }
+                } else {
+                    LazyColumn(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(top = 8.dp, bottom = 8.dp)
+                    ) {
+                        items(observations) { obs ->
+                            ObservationCard(observation = obs) {
+                                navController.navigate(Screen.ObservationDetail.createRoute(obs.id))
+                            }
                         }
                     }
                 }
             }
         }
-    }
+    )
 }
 
 @Composable
@@ -130,8 +179,8 @@ fun PlantCard(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp),
-        shape = RoundedCornerShape(8.dp)
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        shape = RoundedCornerShape(12.dp)
     ) {
         Box(modifier = Modifier.height(180.dp)) {
             AsyncImage(
@@ -148,12 +197,13 @@ fun PlantCard(
             ) {
                 Text(
                     text = plant.commonName,
-                    style = MaterialTheme.typography.titleLarge,
+                    style = MaterialTheme.typography.headlineSmall,
                     color = Color.White
                 )
                 Button(
                     onClick = onDetailsClick,
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00C853))
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00C853)),
+                    shape = RoundedCornerShape(20.dp)
                 ) {
                     Text(text = "Plant Details", color = Color.White)
                 }
@@ -171,8 +221,8 @@ fun ObservationCard(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp),
-        shape = RoundedCornerShape(8.dp)
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        shape = RoundedCornerShape(12.dp)
     ) {
         Box(modifier = Modifier.height(180.dp)) {
             AsyncImage(
@@ -187,20 +237,25 @@ fun ObservationCard(
                     .padding(16.dp),
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
-                Row(modifier = Modifier.fillMaxWidth()) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.Top
+                ) {
                     Column(modifier = Modifier.weight(1f)) {
                         Text(
                             text = observation.relatedPlantName,
-                            style = MaterialTheme.typography.titleMedium,
+                            style = MaterialTheme.typography.headlineSmall,
                             color = Color.White
                         )
                         Text(
-                            text = observation.relatedPlantName, // or scientificName if available
+                            text = observation.relatedPlantName,
                             style = MaterialTheme.typography.bodyMedium,
                             color = Color.White
                         )
                     }
-                    Column(horizontalAlignment = Alignment.End) {
+                    Column(
+                        horizontalAlignment = Alignment.End
+                    ) {
                         Text(
                             text = dateText,
                             style = MaterialTheme.typography.bodySmall,
@@ -214,7 +269,7 @@ fun ObservationCard(
                     }
                 }
                 Text(
-                    text = observation.note ?: "",
+                    text = observation.note.orEmpty(),
                     style = MaterialTheme.typography.bodyMedium,
                     color = Color.White,
                     maxLines = 2,
@@ -222,7 +277,8 @@ fun ObservationCard(
                 )
                 Button(
                     onClick = onDetailsClick,
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00C853))
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00C853)),
+                    shape = RoundedCornerShape(20.dp)
                 ) {
                     Text(text = "Observation Details", color = Color.White)
                 }
