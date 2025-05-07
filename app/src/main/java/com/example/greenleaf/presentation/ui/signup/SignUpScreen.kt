@@ -1,4 +1,4 @@
-package com.example.greenleaf.presentation.ui.login
+package com.example.greenleaf.presentation.ui.signup
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -133,10 +133,10 @@ fun SignUpScreen(viewModel: SignUpViewModel, onNavigateToLogin: () -> Unit) {
     }
 }
 
-// --- GreenInputField is OUTSIDE now 👇 ---
+// --- GreenInputField is OUTSIDE now  ---
 
 
-// --- GreenInputField is OUTSIDE now 👇 ---
+// --- GreenInputField is OUTSIDE now  ---
 
 @Composable
 fun GreenInputField(

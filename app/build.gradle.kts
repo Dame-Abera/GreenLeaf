@@ -44,10 +44,11 @@ android {
 
 dependencies {
 
-
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
     implementation(libs.dagger.hilt)
     ksp(libs.dagger.hilt.compiler)
-
+    implementation(libs.androidx.material.icons.extended)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor() : AuthRepository {
     private val mockEmail = "test@example.com"
-    private val mockPassword = ""
+    private val mockPassword = "password123"
 
     override suspend fun login(email: Email, password: Password): ResultOrFailure<Unit> {
         return if (email.value == mockEmail && password.value == mockPassword) {

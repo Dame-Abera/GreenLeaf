@@ -11,6 +11,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.greenleaf.presentation.ui.signup.SignUpScreen
 import com.example.greenleaf.presentation.viewmodels.SignUpViewModel
 import com.example.greenleaf.ui.theme.GreenLeafTheme
 

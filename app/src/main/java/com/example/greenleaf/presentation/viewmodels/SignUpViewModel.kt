@@ -2,8 +2,8 @@
 package com.example.greenleaf.presentation.viewmodels
 
 import androidx.lifecycle.ViewModel
-import com.example.greenleaf.presentation.ui.login.SignUpEvent
-import com.example.greenleaf.presentation.ui.login.SignUpUiState
+import com.example.greenleaf.presentation.ui.signup.SignUpEvent
+import com.example.greenleaf.presentation.ui.signup.SignUpUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

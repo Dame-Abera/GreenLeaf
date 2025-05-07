@@ -1,4 +1,4 @@
-package com.example.greenleaf.presentation.ui.login
+package com.example.greenleaf.presentation.ui.signup
 
 
 data class SignUpUiState(
