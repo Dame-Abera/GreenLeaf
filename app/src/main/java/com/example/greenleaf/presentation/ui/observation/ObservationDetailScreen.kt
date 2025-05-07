@@ -25,6 +25,7 @@ import java.util.Locale
 import com.example.greenleaf.presentation.viewmodels.PlantDetailViewModel
 import com.example.greenleaf.presentation.viewmodels.ObservationDetailViewModel
 import com.example.greenleaf.fakedata.Observation
+import com.example.greenleaf.presentation.navigation.Screen
 
 @Composable
 fun ObservationDetailScreen(
@@ -131,7 +132,7 @@ fun ObservationDetailScreen(
                 Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                     Button(
 
-                        onClick = { navController.navigate("add_edit_observation/${observation.id}") },
+                        onClick = {  Screen.AddEditObservation.createRoute(observation.id)},
                         colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00C853))
                     ) {
                         Text("Edit Observation", color = Color.White)

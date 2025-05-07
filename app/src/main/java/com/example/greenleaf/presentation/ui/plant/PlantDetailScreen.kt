@@ -19,6 +19,8 @@ import androidx.navigation.NavController
 import coil3.compose.AsyncImage
 import com.example.greenleaf.presentation.viewmodels.PlantDetailViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.greenleaf.presentation.navigation.Screen
+
 @Composable
 fun PlantDetailScreen(
     navController: NavController,
@@ -96,7 +98,9 @@ fun PlantDetailScreen(
 
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     Button(
-                        onClick = { navController.navigate("add_edit_plant/${plant.id}")},
+                        onClick = { navController.navigate(
+                                  Screen.AddEditPlant.createRoute(plant.id)
+                                          ) },
                         colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00C853))
                     ) {
                         Text("Edit Plant Details")

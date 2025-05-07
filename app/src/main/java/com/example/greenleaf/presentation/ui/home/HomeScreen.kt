@@ -83,7 +83,7 @@ fun HomeScreen(
 
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(80.dp)
+                    .height(90.dp)
             ) {
                 NavigationBarItem(
                     selected = true,
@@ -200,13 +200,16 @@ fun PlantCard(
                     style = MaterialTheme.typography.headlineSmall,
                     color = Color.White
                 )
-                Button(
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.End
+                ) {Button(
                     onClick = onDetailsClick,
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00C853)),
                     shape = RoundedCornerShape(20.dp)
                 ) {
-                    Text(text = "Plant Details", color = Color.White)
-                }
+                        Text(text = "Plant Details", color = Color.White)
+                    } }
             }
         }
     }
@@ -275,13 +278,17 @@ fun ObservationCard(
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis
                 )
-                Button(
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.End
+                ) {Button(
                     onClick = onDetailsClick,
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00C853)),
                     shape = RoundedCornerShape(20.dp)
                 ) {
                     Text(text = "Observation Details", color = Color.White)
-                }
+                }}
             }
         }
     }
