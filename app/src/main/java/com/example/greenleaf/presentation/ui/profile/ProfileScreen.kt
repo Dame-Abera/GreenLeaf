@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.greenleaf.fakedata.FakeUserRepository
+import com.example.greenleaf.presentation.components.MainBottomBar
 import com.example.greenleaf.presentation.viewmodels.ProfileViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -38,25 +39,7 @@ fun ProfileScreen(
 
     Scaffold(
         bottomBar = {
-            NavigationBar {
-                NavigationBarItem(
-                    icon = { Icon(Icons.Default.Home, contentDescription = "Home") },
-                    label = { Text("Home") },
-                    selected = false,
-                    onClick = {
-                        navController.navigate("home") {
-                            popUpTo("profile")
-                            launchSingleTop = true
-                        }
-                    }
-                )
-                NavigationBarItem(
-                    icon = { Icon(Icons.Default.Person, contentDescription = "Account") },
-                    label = { Text("Account") },
-                    selected = true,
-                    onClick = { /* already here */ }
-                )
-            }
+            MainBottomBar(navController)
         },
         topBar = {
             CenterAlignedTopAppBar(

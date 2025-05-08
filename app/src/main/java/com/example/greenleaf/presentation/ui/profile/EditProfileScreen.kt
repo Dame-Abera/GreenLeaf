@@ -20,6 +20,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import com.example.greenleaf.presentation.components.MainBottomBar
 import com.example.greenleaf.presentation.viewmodels.EditProfileViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -31,25 +32,7 @@ fun EditProfileScreen(
     Scaffold(
         // ←— ADD BOTTOM BAR HERE
         bottomBar = {
-            NavigationBar {
-                NavigationBarItem(
-                    icon = { Icon(Icons.Default.Home, contentDescription = "Home") },
-                    label = { Text("Home") },
-                    selected = false,
-                    onClick = {
-                        navController.navigate("home") {
-                            popUpTo("edit_profile")
-                            launchSingleTop = true
-                        }
-                    }
-                )
-                NavigationBarItem(
-                    icon = { Icon(Icons.Default.Person, contentDescription = "Account") },
-                    label = { Text("Account") },
-                    selected = true,
-                    onClick = { /* no-op; already on Account */ }
-                )
-            }
+            MainBottomBar(navController)
         },
         topBar = {
             CenterAlignedTopAppBar(

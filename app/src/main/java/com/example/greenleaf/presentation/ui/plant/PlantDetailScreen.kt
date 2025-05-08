@@ -19,6 +19,7 @@ import androidx.navigation.NavController
 import coil3.compose.AsyncImage
 import com.example.greenleaf.presentation.viewmodels.PlantDetailViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.greenleaf.presentation.components.MainBottomBar
 import com.example.greenleaf.presentation.navigation.Screen
 
 @Composable
@@ -35,20 +36,7 @@ fun PlantDetailScreen(
 
     Scaffold(
         bottomBar = {
-            NavigationBar {
-                NavigationBarItem(
-                    selected = false,
-                    onClick = { navController.navigate("home") },
-                    icon = { Icon(Icons.Default.Home, contentDescription = "Home") },
-                    label = { Text("Home") }
-                )
-                NavigationBarItem(
-                    selected = false,
-                    onClick = { navController.navigate("account") },
-                    icon = { Icon(Icons.Default.Person, contentDescription = "Account") },
-                    label = { Text("Account") }
-                )
-            }
+            MainBottomBar(navController)
         }
     ) { innerPadding ->
         Column(

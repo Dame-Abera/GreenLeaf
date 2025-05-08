@@ -26,7 +26,7 @@ import coil3.compose.AsyncImage
 import com.example.greenleaf.fakedata.Plant
 import com.example.greenleaf.fakedata.Observation
 import com.example.greenleaf.presentation.viewmodels.HomeViewModel
-
+import com.example.greenleaf.presentation.components.MainBottomBar
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
@@ -73,48 +73,7 @@ fun HomeScreen(
                 Icon(Icons.Filled.Add, contentDescription = "Add")
             }
         },
-        bottomBar = {
-            HorizontalDivider(
-                modifier = Modifier.fillMaxWidth(),
-                thickness = 1.dp,
-                color = Color.LightGray
-            )
-            NavigationBar(
-
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(90.dp)
-            ) {
-                NavigationBarItem(
-                    selected = true,
-                    onClick = { /* already on Home */ },
-                    icon = { Icon(Icons.Filled.Home, contentDescription = "Home") },
-                    label = { Text("Home") },
-                    colors = NavigationBarItemDefaults.colors(
-                        selectedIconColor = Color(0xFF00C853),
-                        selectedTextColor = Color(0xFF00C853),
-                        unselectedIconColor = Color.Gray,
-                        unselectedTextColor = Color.Gray
-                    )
-                )
-                NavigationBarItem(
-                    selected = false,
-                    onClick = {
-                        navController.navigate(Screen.Profile.route) {
-                            popUpTo(Screen.Home.route) { inclusive = false }
-                        }
-                    },
-                    icon = { Icon(Icons.Filled.Person, contentDescription = "Account") },
-                    label = { Text("Account") },
-                    colors = NavigationBarItemDefaults.colors(
-                        selectedIconColor = Color(0xFF00C853),
-                        selectedTextColor = Color(0xFF00C853),
-                        unselectedIconColor = Color.Gray,
-                        unselectedTextColor = Color.Gray
-                    )
-                )
-            }
-        },
+        bottomBar = {MainBottomBar(navController) },
         content = { innerPadding ->
             Column(
                 modifier = Modifier
