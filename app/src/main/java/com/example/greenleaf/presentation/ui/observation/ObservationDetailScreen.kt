@@ -1,5 +1,4 @@
 package com.example.greenleaf.presentation.ui.observation
-
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -128,7 +127,7 @@ fun ObservationDetailScreen(
                 Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                     Button(
 
-                        onClick = {  Screen.AddEditObservation.createRoute(observation.id)},
+                        onClick = {   navController.navigate(Screen.AddEditObservation.createRoute(observation.id))},
                         colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00C853))
                     ) {
                         Text("Edit Observation", color = Color.White)
