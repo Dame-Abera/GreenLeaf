@@ -26,7 +26,7 @@ GreenLeaf provides essential tools for documenting plant species and tracking fi
   - **Habitat**
   - **Description**
 
-### 📌 Field Observations
+###  Field Observations
 
 - Log and edit notes on plant sightings.
 - Record observations with:
