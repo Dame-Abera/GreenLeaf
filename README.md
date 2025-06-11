@@ -54,13 +54,13 @@ GreenLeaf provides essential tools for documenting plant species and tracking fi
 ### For Jetpack Compose Version:
 -  **Android Studio** with Jetpack Compose support  
 -  **Kotlin**  
-- 🐘 **SQLite**  
+- 🐘 **Sqlite**  
 - 🐍 **Python (Django)**  
 -  **Git**  
 
 ### For Flutter Version:
 -  **Flutter SDK**  
 -  **Dart**  
-- 🐘 **SQLite**  
+- 🐘 **Sqlite**  
 - 🐍 **Python (Django)**  
 -  **Git**  
