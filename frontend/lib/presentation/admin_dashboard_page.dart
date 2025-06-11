@@ -105,7 +105,8 @@ class _AdminDashboardPageState extends ConsumerState<AdminDashboardPage> {
           setState(() {
             _selectedIndex = index;
             if (index == 0) {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
+              // Refresh the users list instead of navigating to HomePage
+              ref.read(userProvider.notifier).fetchUsers();
             } else if (index == 1) {
               Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfilePage()));
             }
