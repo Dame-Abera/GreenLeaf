@@ -44,7 +44,7 @@ GreenLeaf provides essential tools for documenting plant species and tracking fi
 - Django REST API: Provides RESTful services for event and user management.  
 
 ### **Database**  
-- PostgreSQL: Stores user data, events, and feedback.  
+- Sqlite: Stores user data, events, and feedback.  
 
 ## **Testing**  
 - Widget, Unit, and Integration Testing to ensure app reliability.  
@@ -54,13 +54,13 @@ GreenLeaf provides essential tools for documenting plant species and tracking fi
 ### For Jetpack Compose Version:
 -  **Android Studio** with Jetpack Compose support  
 -  **Kotlin**  
-- 🐘 **PostgreSQL**  
+- 🐘 **SQLite**  
 - 🐍 **Python (Django)**  
 -  **Git**  
 
 ### For Flutter Version:
 -  **Flutter SDK**  
 -  **Dart**  
-- 🐘 **PostgreSQL**  
+- 🐘 **SQLite**  
 - 🐍 **Python (Django)**  
 -  **Git**  
