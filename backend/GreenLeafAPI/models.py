@@ -1,12 +1,9 @@
 from django.db import models
-
-# Create your models here.
-from django.db import models
 from django.utils.timezone import now
 from django.contrib.auth import get_user_model
 
 
-# upload path for plant record image
+# which fields can be null????????? - identify and set null=True on them :)
 def plant_upload_to(instance, filename):
     user_id = instance.created_by.id if instance.created_by else 'unknown'
     return f'plants/{user_id}/{filename}'
@@ -21,23 +18,23 @@ class PlantModel(models.Model):
     description = models.CharField(max_length=3000, null=True, blank=True)
     created_by = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='plants', default="no user")
 
-    def str(self):
+    def __str__(self):
         return self.scientific_name
 
 
-# upload path for observation record image                                            
 def observation_upload_to(instance, filename):
     user_id = instance.created_by.id if instance.created_by else 'unknown'
     return f'observations/{user_id}/{filename}'
 
 
+# Add time field and latitude and longitude fields on the figma design 
 class ObservationModel(models.Model):
     observation_image = models.ImageField(null=True, blank=True, upload_to=observation_upload_to)
     related_plant = models.ForeignKey(PlantModel, on_delete=models.SET_NULL, null=True, blank=True)
     time = models.TimeField(default=now)
     date = models.DateField(default=now)
     location = models.CharField(max_length=250)
+    # latitude = models.FloatField(blank=True, null=True)
+    # longitude = models.FloatField(blank=True, null=True)
     note = models.CharField(max_length=3000, null=True, blank=True)
     created_by = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='observations',default="no user")
-
-
