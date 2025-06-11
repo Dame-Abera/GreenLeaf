@@ -4,7 +4,7 @@ from GreenLeafAPI import models as my_models
 class PlantSerializer(serializers.ModelSerializer):
     class Meta: 
         model = my_models.PlantModel
-        fields = "all"
+        fields = "__all__"
         read_only_fields = ['created_by',]
 
 
@@ -19,5 +19,5 @@ class ObservationSerializer(serializers.ModelSerializer):
     )
     class Meta:
         model = my_models.ObservationModel
-        fields = 'all'
+        fields = '__all__'
         read_only_fields = ['created_by',]
