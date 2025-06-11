@@ -31,7 +31,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
     lastNameController = TextEditingController(text: user?.lastName ?? '');
     birthdateController = TextEditingController(text: user?.birthdate?.toIso8601String().split('T').first ?? '');
     if (user?.gender == 'Male' || user?.gender == 'Female') {
-      _selectedGender = user?.gender;
+    _selectedGender = user?.gender;
     } else {
       _selectedGender = '';
     }

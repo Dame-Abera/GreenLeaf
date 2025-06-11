@@ -4,7 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'domain/plant.dart';
 import 'domain/observation.dart';
-import 'presentation/app.dart';
+import 'presentation/app.dart'; // Assuming GreenLeafApp is defined here
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,7 +30,7 @@ void main() async {
 
   runApp(
     const ProviderScope(
-      child: GreenLeafApp(),
+      child: GreenLeafApp(), // Your main app widget
     ),
   );
-}
+} 
