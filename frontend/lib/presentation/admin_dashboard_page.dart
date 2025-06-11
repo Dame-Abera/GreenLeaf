@@ -85,7 +85,7 @@ class _AdminDashboardPageState extends ConsumerState<AdminDashboardPage> {
             child: userState.isLoading
                 ? const Center(child: CircularProgressIndicator())
                 : userState.error != null
-                    ? Center(child: Text('Error: ${userState.error}', style: TextStyle(color: Colors.red)))
+                    ? Center(child: Text('Error: ${userState.error}', style: const TextStyle(color: Colors.red)))
                     : filteredUsers.isEmpty
                         ? const Center(child: Text('No users found.'))
                         : ListView.builder(
@@ -107,7 +107,7 @@ class _AdminDashboardPageState extends ConsumerState<AdminDashboardPage> {
             if (index == 0) {
               Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
             } else if (index == 1) {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfilePage()));
             }
           });
         },

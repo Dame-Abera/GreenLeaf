@@ -30,7 +30,11 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
     firstNameController = TextEditingController(text: user?.firstName ?? '');
     lastNameController = TextEditingController(text: user?.lastName ?? '');
     birthdateController = TextEditingController(text: user?.birthdate?.toIso8601String().split('T').first ?? '');
-    _selectedGender = user?.gender;
+    if (user?.gender == 'Male' || user?.gender == 'Female') {
+      _selectedGender = user?.gender;
+    } else {
+      _selectedGender = '';
+    }
     phoneController = TextEditingController(text: user?.phoneNumber ?? '');
   }
 
@@ -182,6 +186,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                   value: _selectedGender,
                   decoration: const InputDecoration(labelText: 'Gender'),
                   items: const [
+                    DropdownMenuItem(value: '', child: Text('Select Gender')),
                     DropdownMenuItem(value: 'Male', child: Text('Male')),
                     DropdownMenuItem(value: 'Female', child: Text('Female')),
                   ],

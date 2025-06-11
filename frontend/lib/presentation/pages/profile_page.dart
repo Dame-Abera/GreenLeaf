@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:greenleaf_app/domain/user.dart';
 import 'package:greenleaf_app/application/auth_provider.dart';
 
 class ProfilePage extends ConsumerWidget {

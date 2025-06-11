@@ -31,7 +31,7 @@ class LoginPage extends ConsumerWidget {
           children: [
             Container(
               height: 220,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/greenleaf_bg.jpg'),
                   fit: BoxFit.cover,
@@ -57,7 +57,7 @@ class LoginPage extends ConsumerWidget {
                   TextField(
                     controller: emailController,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.email_outlined),
+                      prefixIcon: const Icon(Icons.email_outlined),
                       hintText: 'Email',
                       filled: true,
                       fillColor: Colors.green[50],
@@ -69,7 +69,7 @@ class LoginPage extends ConsumerWidget {
                     controller: passwordController,
                     obscureText: true,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.lock_outline),
+                      prefixIcon: const Icon(Icons.lock_outline),
                       hintText: 'Password',
                       filled: true,
                       fillColor: Colors.green[50],
